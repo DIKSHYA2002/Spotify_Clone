@@ -1,8 +1,8 @@
-// import React, { useState, useRef, useEffect } from "react";
-// import Controls from "./Controls";
-// import Details from "./Details";
-// function Player(props) {
-//   const audioEl = useRef(null);
+import React, { useState, useRef, useEffect } from "react";
+import Controls from "./Controls";
+import Details from "./Details";
+function Player() {
+  const audioEl = useRef(null);
 //   const [isPlaying, setIsPlaying] = useState(false);
 
 //   useEffect(() => {
@@ -37,7 +37,25 @@
 //       });
 //     }
 //   };
-
+return (
+    <div className="c-player">
+      <h4>Playing now</h4>
+      <Details />
+      <Controls />
+      <audio
+        className="c-player--audio"
+        src=""
+        ref={audioEl}
+        controls
+      ></audio>
+      <p>
+        Next up:{" "}
+        <span>
+          next songs:
+        </span>
+      </p>
+    </div>
+  );
 //   return (
 //     <div className="c-player">
 //       <h4>Playing now</h4>
@@ -62,6 +80,6 @@
 //       </p>
 //     </div>
 //   );
-// }
+}
 
-// export default Player;
+export default Player;

@@ -1,5 +1,15 @@
-// import React from "react";
-
+import React from "react";
+function Details() {
+    return (
+      <div className="c-player--details">
+        <div className="details-img">
+          <img src="" alt="" />
+        </div>
+        <h3 className="details-title">title</h3>
+        <h4 className="details-artist">artist</h4>
+      </div>
+    );
+  }
 // function Details(props) {
 //   return (
 //     <div className="c-player--details">
@@ -12,4 +22,4 @@
 //   );
 // }
 
-// export default Details;
+export default Details;

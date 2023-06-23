@@ -32,7 +32,10 @@ const Register = () => {
     }
   };
   return (
-
+    <>
+  <div className="logo">
+      <img src="https://th.bing.com/th/id/R.5caffed066a31aebbde3508d2be778a7?rik=noIH9ykO9%2b81Ag&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f5%2fc%2fa%2ff%2f141490005811489798026274.spotify-logo-horizontal-white-rgb.png&ehk=K1YBRIzKhYr1u3XwtUUR9%2bZ54Hq93fzy0Rup098WCU0%3d&risl=&pid=ImgRaw&r=0" alt="" className='logo-spotify'/>
+    </div>
         
             <div className="container">
 
@@ -46,10 +49,7 @@ const Register = () => {
                 <span className="label-text">Email</span>
                 <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
               </label>
-              <label>
-                <span className="label-text">Address</span>
-                <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)}/>
-              </label>
+           
               <label>
                 <span className="label-text">Phone</span>
                 <input type='tel' value={phone} onChange={(e)=>setPhone(e.target.value)}/>
@@ -58,16 +58,13 @@ const Register = () => {
                 <span className="label-text">Password</span>
                 <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
               </label>
-              <label className="col-one-half">
-                <span className="label-text">Security Question:what is your birth place ?</span>
-                <input type='text' value={answer} onChange={(e)=>setAnswer(e.target.value)}/>
-              </label>
               <div className="text-center">
               <input className="submit-button" type='submit'/>
               </div>
             </form>
 
         </div>
+        </>
   )
 }
 

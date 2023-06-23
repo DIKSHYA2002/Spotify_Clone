@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Auth';
 import axios from "axios";
-
+import "./Login.css"
 const Login = () => {
   const [auth,setAuth]=useAuth();
   const [email, setEmail] = useState("");
@@ -35,10 +35,14 @@ const Login = () => {
     }
   };
   return (
+    <>
+    <div className="logo">
+      <img src="https://th.bing.com/th/id/R.5caffed066a31aebbde3508d2be778a7?rik=noIH9ykO9%2b81Ag&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f5%2fc%2fa%2ff%2f141490005811489798026274.spotify-logo-horizontal-white-rgb.png&ehk=K1YBRIzKhYr1u3XwtUUR9%2bZ54Hq93fzy0Rup098WCU0%3d&risl=&pid=ImgRaw&r=0" alt="" className='logo-spotify'/>
+    </div>
       <div className="container">
-       <h1 className="text-center">Login Form</h1>
+       
           <form className="registration-form" onSubmit={handleSubmit}>
-            
+          <h1 className="text-center">Log in to Spotify</h1>
             <label className="password">
               <span className="label-text">Email</span>
               <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
@@ -55,9 +59,8 @@ const Login = () => {
               <Link to='/forgot-password' className="label-text">Forgot-password?</Link>
             </label>
           </form>
-
 </div>
-    
+</>
   )
 }
 
