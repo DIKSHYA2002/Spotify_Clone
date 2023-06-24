@@ -3,7 +3,7 @@ function Details() {
     return (
       <div className="c-player--details">
         <div className="details-img">
-          <img src="" alt="" />
+          <img src="https://pbs.twimg.com/media/FYIwVwIUIAEVfnn.jpg" alt="" />
         </div>
         <h3 className="details-title">title</h3>
         <h4 className="details-artist">artist</h4>
