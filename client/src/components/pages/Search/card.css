@@ -40,3 +40,15 @@
     text-align: left;
 
 }
+.disp12{
+    display: block;
+    color: white;
+}
+.listplay{
+    cursor: pointer;
+    background-color: green;
+    border: 2px solid black;
+}
+.disp13{
+    display: none;
+}

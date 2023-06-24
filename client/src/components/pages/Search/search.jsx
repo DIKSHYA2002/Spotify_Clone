@@ -80,7 +80,7 @@ function Search() {
                     <div className="showsearch">
                         {arr.map((el) => {
                             return (
-                                <Card name={el.name} image={el.image} artist={el.artist}/>
+                                <Card id = {el.id} song_path = {el.song_path}image={el.image} name={el.name} artist={el.artist} genre = {el.genre} year = {el.year}/>
                             );
                         })}
                     </div>

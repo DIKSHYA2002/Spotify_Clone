@@ -1,8 +1,10 @@
 import React ,{useState}from 'react'
 import {FaPlay} from 'react-icons/fa'
 import "../layout/Navbar.css"
+import { useSong } from '../context/Song'
 function PlayListCard(props) {
     const [visible,setvisible]=useState('hidden')
+    const [song , setSong] = useSong();
     const displayPlay=()=>{
         
           setvisible('visible');
@@ -10,8 +12,21 @@ function PlayListCard(props) {
       const notPlay=()=>{
           setvisible('hidden');
         }
+        const setSongPlayer=()=>{
+          setSong(
+            {
+                id:props.id,
+                name: props.name,
+                image: props.image,
+                artist: props.artist,
+                genre: props.genre,
+                year: props.year,
+                song_path : props.song_path
+            }
+          )
+        }
   return (
-    <div className="music-card" onMouseOver={displayPlay}  onMouseOut={notPlay}>
+    <div className="music-card" onMouseOver={displayPlay}  onMouseOut={notPlay} onClick={setSongPlayer}>
                 <img className="img"src={props.image} alt="" />
             <div className="name">
                 {props.name} 

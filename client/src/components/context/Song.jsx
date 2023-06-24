@@ -5,14 +5,13 @@ const songContext = createContext();
 
 const SongProvider = ({children})=>{
     const [song , setSong] = useState({
-            id:0,
-            name:"",
-            image:"",
-            artist:"",
-            genre:"",
-            year:"",
-            song_path:"",
-            song_duration:""
+        id: 2,
+        name: "Butter",
+        image: "https://pbs.twimg.com/media/E-5eZ1eWYAAwLIA?format=jpg&name=4096x4096",
+        artist: "BTS",
+        genre: "kpop",
+        year: "2021",
+        song_path: "/assets/songs-kpop/BTS_Butter.mp3"
     });
     return (
         <songContext.Provider value={[song,setSong]}>

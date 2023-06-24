@@ -3,8 +3,9 @@ import axios from 'axios';
 const AuthContext = createContext();
 const AuthProvider = ({children})=>{
     const [auth,setAuth]  = useState({
-        user:null,
-        token:""
+        id:null,
+        token:"",
+        name: ""
     });
  
   axios.defaults.headers.common['Authorization']=auth?.token;

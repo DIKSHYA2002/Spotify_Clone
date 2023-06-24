@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './Navbar.css'
 import {GoHome} from 'react-icons/go'
@@ -10,8 +10,10 @@ import {BsFillArrowLeftCircleFill} from 'react-icons/bs';
 import {MdAddCircle} from 'react-icons/md'
 import {BiSolidLogInCircle} from 'react-icons/bi'
 import { useAuth } from '../context/Auth'
+import {BsFillArrowRightCircleFill} from 'react-icons/bs'
 const Navbar = () => {
   const [auth , setAuth] = useAuth();
+  const navigate = useNavigate();
   const handlelogout =()=>{
     setAuth({
       ...auth,
@@ -19,7 +21,11 @@ const Navbar = () => {
       token:'',
     });
     localStorage.removeItem("auth");
-  
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    navigate("/login");
+
   };
  const [nav , setNav] = useState('navbar close');
   const CloseNavbar=()=>{
@@ -33,7 +39,6 @@ const Navbar = () => {
     
   }
   return (
-    <>
     <div className={nav}>
         <div className="top">
           <ul className='top-list'>
@@ -43,11 +48,9 @@ const Navbar = () => {
         </div>
         <div className="bottom">
            <ul className='bottom-list'>
-            <li onClick={CloseNavbar} ><NavLink><BiLibrary /> <span>Library</span> <span className='button' ><BsFillArrowLeftCircleFill id='button' onClick={CloseNavbar}/></span></NavLink></li>
-            <li><NavLink to="/likedSongs"><BsSuitHeart/> <span>Liked Songs</span></NavLink></li>
-            <li><NavLink to="/CreatePlaylists"><MdAddCircle/> <span>Create Playlist</span></NavLink></li>
+            <li  ><NavLink to="/playlists"><BiLibrary /> <span>Library</span> <span className='button' ><BsFillArrowLeftCircleFill id='button' onClick={CloseNavbar}/></span></NavLink></li>
             {
-                  !auth.user ?(
+                  !localStorage.getItem("token") ?(
                     <>
                        <li><NavLink to="/login"><BiSolidLogInCircle/> <span>Log in</span></NavLink></li>
                     </>
@@ -55,13 +58,12 @@ const Navbar = () => {
                   <li><NavLink to="/login" onClick={handlelogout}><BiSolidLogInCircle/> <span>Log out</span></NavLink></li>
                   </>)
             }
-         
+             <li><NavLink onClick={CloseNavbar}><BsFillArrowRightCircleFill/></NavLink></li>
           </ul>
         </div>
     </div>
    
-    
-    </>
+   
   )
 }
 

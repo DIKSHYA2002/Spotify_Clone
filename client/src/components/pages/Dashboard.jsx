@@ -44,18 +44,17 @@ const Dashboard = () =>
               
               <div className="songs">
               {newarr.map((el)=>{
-              return(<PlayListCard image={el.image} name={el.name} artist={el.artist}/>)})}
-                 
+              return(<PlayListCard id = {el.id} song_path = {el.song_path} image={el.image} name={el.name} artist={el.artist} genre = {el.genre} year = {el.year}/>)})}
               </div>
               <div className="music-player">
                 <Music_Player/>
               </div>
               
             </div>  
-            <div id="page">
+            <div id="page2">
           {pageArr.map((e) => {
             return (
-              <button id="btn" onClick={() => handlePage(e)}>
+              <button id="btn1" onClick={() => handlePage(e)}>
                 {e}
               </button>
             );

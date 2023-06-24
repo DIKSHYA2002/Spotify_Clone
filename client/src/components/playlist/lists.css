@@ -1,0 +1,43 @@
+.playlist {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lists{
+    margin-left: 30rem;
+    /* margin-top: 10rem; */
+  }
+
+  .playlist h3 {
+    margin-top: 0;
+  }
+  
+  .playlist ul {
+    list-style-type: none;
+    padding: 0;
+    color: antiquewhite;
+  }
+  
+  .playlist li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .song-name {
+    flex-grow: 1;
+    font-weight: bold;
+    margin-left: 100px;
+  }
+  
+  .song-album,
+  .song-duration {
+    margin-left: 100px;
+  }
+
+  .close-button{
+    margin-left: 110%;
+  }

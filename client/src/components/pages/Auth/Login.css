@@ -19,7 +19,7 @@ align-items: center;
   margin: 1rem;
 }
 .container{
-    height: 100vh;
+   
     width: 50%;
     margin-top: 1rem;
    margin-left: 20rem;
@@ -31,6 +31,7 @@ align-items: center;
    flex-direction: column;
   background-color: black;
   color: white;
+
 }
 .container form {
     display: flex;
@@ -69,4 +70,9 @@ align-items: center;
     width: 70%;
     margin-left: 5rem;
     margin-right: 5rem;
+}
+
+.label-text{
+    color: white;
+    text-decoration: none;
 }
