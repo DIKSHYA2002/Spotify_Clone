@@ -8,9 +8,10 @@ const app = express();
 const port = 1000;
 app.use(express.json());
 app.use(cors());
-app.use("/user", userRoutes);
+app.use("/user", userRoutes); //user/add   
+
 app.use(Auth);
-app.use("/playlist", playRoutes);
+app.use("/playlist", playRoutes); ///playlist/add //:id /playllits
 dbConn();
 app.listen(port, () => {
   console.log(`Server started at port ${port}`);

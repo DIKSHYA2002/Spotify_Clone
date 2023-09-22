@@ -10,16 +10,17 @@ const Auth = async (req, res, next) => {
     }
     if (jwt.verify(token, "spotifyclone")) {
       next();
-    } else {
+    } 
+    else {
       return res.status(401).json({
         message: "Unauthorized",
       });
     }
-  } catch (err) {
+  }
+   catch (err) {
     return res.send({
       message: "Unauthorized",
     });
   }
 };
-
 module.exports = Auth;

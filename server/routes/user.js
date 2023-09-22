@@ -3,12 +3,13 @@ const bcrypt = require("bcryptjs");
 const { User } = require("../models/User");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-
+//register
 router.post("/add", async (req, res) => {
   let { name, email, password, gender } = req.body;
   try {
     const findUser = await User.find({ email });
-    if (findUser.length === 0) {
+    if (findUser.length === 0) 
+    {
       bcrypt.hash(password, 3, async (err, hashed) => {
         if (err) {
           res.send({ msg: "error occured" });
@@ -24,7 +25,8 @@ router.post("/add", async (req, res) => {
           res.send({ msg: "User Registered Successfully", user: user });
         }
       });
-    } else {
+    } 
+    else {
       res.json({ msg: "User is already Registered" });
     }
   } catch (err) {
@@ -32,16 +34,19 @@ router.post("/add", async (req, res) => {
   }
 });
 
+//login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
     if (user) {
       const verifyUser = await bcrypt.compare(password, user.password);
-      if (verifyUser) {
+      if (verifyUser) 
+      {
         const token = jwt.sign({ id: user._id }, "spotifyclone");
         res.send({
           message: "Logged in",
+          user: user,
           token,
         });
       } else {

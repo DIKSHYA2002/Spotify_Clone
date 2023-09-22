@@ -5,10 +5,10 @@ const fs = require("fs");
 const { User } = require("../models/User");
 const router = express.Router();
 
-//SPECIFIC THOUGHT
+//all playlist access
 router.get("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id; 
     const user = await User.findById(id);
     if (user.length == 0) {
       return res.send({
@@ -20,14 +20,15 @@ router.get("/:id", async (req, res) => {
         playlist: user.playlists,
       });
     }
-  } catch (err) {
+  } 
+  catch (err) {
     return res.send({
       message: "Sommething went wrong",
       error: err.message,
     });
   }
 });
-
+//particular playlist access
 router.get("/:id/:playId", async (req, res) => {
   try {
     const id = req.params.id;
@@ -37,14 +38,15 @@ router.get("/:id/:playId", async (req, res) => {
       return res.send({
         message: "No users found",
       });
-    } else {
+    } 
+    else {
       const playObj = user.playlists.filter(function (item) {
         return item._id == playId;
       });
       if (playObj) {
         return res.send({
           message: "User retrieved successfully",
-          playlist: user.playObj,
+          playlist: playObj[0],
         });
       } else {
         return res.send({
@@ -60,6 +62,8 @@ router.get("/:id/:playId", async (req, res) => {
   }
 });
 
+//particular playlist delete
+
 router.delete("/:id/:playId", async (req, res) => {
   try {
     const id = req.params.id;
@@ -70,11 +74,12 @@ router.delete("/:id/:playId", async (req, res) => {
         message: "No users found",
       });
     } else {
-      const playObj = user.playlists.filter(function (item) {
+      user.playlists = user.playlists.filter(function (item) {
         return item._id != playId;
       });
+      await user.save();
       return res.send({
-        message: "PLaylist retrieved successfully",
+        message: "PLaylist deleted successfully",
       });
     }
   } catch (err) {
@@ -85,7 +90,7 @@ router.delete("/:id/:playId", async (req, res) => {
   }
 });
 
-//ADD THOUGHT
+//particular playlist add
 router.put("/:id", async (req, res) => {
   try {
     console.log("Reached the add route");
@@ -97,7 +102,8 @@ router.put("/:id", async (req, res) => {
       return res.send({
         message: "No users found",
       });
-    } else {
+    } 
+    else {
       const playObj = {
         name: name,
         songs: [],
@@ -110,7 +116,8 @@ router.put("/:id", async (req, res) => {
         play: playObj,
       });
     }
-  } catch (err) {
+  }
+   catch (err) {
     return res.send({
       message: "Sommething went wrong",
       error: err.message,
@@ -118,7 +125,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//ADD COMMENT
+//particular song added to a particular playlist 
 
 router.put("/song/:userId/:playlistId", async (req, res) => {
   try {
@@ -130,7 +137,8 @@ router.put("/song/:userId/:playlistId", async (req, res) => {
       return res.send({
         message: "No users found",
       });
-    } else {
+    } 
+    else {
       const playlists = user.playlists;
       const songObj = { id, name, image, artist, genre, year, song_path };
       playlists.forEach((item) => {
@@ -142,7 +150,8 @@ router.put("/song/:userId/:playlistId", async (req, res) => {
             return res.send({
               message: "Song already exists",
             });
-          } else {
+          } 
+          else {
             item.songs = [...item.songs, songObj];
           }
         }
@@ -161,6 +170,8 @@ router.put("/song/:userId/:playlistId", async (req, res) => {
     });
   }
 });
+
+//particular song delete frm  a playlist
 
 router.delete("/song/:userId/:playlistId/:songId", async (req, res) => {
   try {
